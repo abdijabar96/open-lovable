@@ -1,0 +1,49 @@
+Error: A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <HotReload assetPrefix="" globalError={[...]}>
+      <AppDevOverlayErrorBoundary globalError={[...]}>
+        <ReplaySsrOnlyErrors>
+        <DevRootHTTPAccessFallbackBoundary>
+          <HTTPAccessFallbackBoundary notFound={<NotAllowedRootHTTPFallbackError>}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<NotAllowedRootHTTPFallbackError>} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <Head>
+                  <link>
+                  <script>
+                  <RootLayout>
+                    <html lang="en">
+                      <body
+                        className="inter_9e72d27f-module__JKMi0a__variable geistsans_9fc57718-module__E7HqPG__variable..."
+-                       data-new-gr-c-s-check-loaded="14.1263.0"
+-                       data-gr-ext-installed=""
+                      >
+                  ...
+
+    at createConsoleError (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_445d8acf._.js:1484:71)
+    at handleConsoleError (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_445d8acf._.js:2090:54)
+    at console.error (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_445d8acf._.js:2243:57)
+    at Proxy.<anonymous> (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/__replco/static/devtools/injected.js:27:27)
+    at https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc06._.js:3012:25
+    at runWithFiberInDEV (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc06._.js:890:74)
+    at emitPendingHydrationWarnings (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc06._.js:3011:13)
+    at completeWork (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc06._.js:6234:102)
+    at runWithFiberInDEV (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc06._.js:890:131)
+    at completeUnitOfWork (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc06._.js:8301:23)
+    at performUnitOfWork (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc06._.js:8238:28)
+    at workLoopConcurrentByScheduler (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc06._.js:8232:58)
+    at renderRootConcurrent (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc06._.js:8214:71)
+    at performWorkOnRoot (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc06._.js:7846:176)
+    at performWorkOnRootViaSchedulerTask (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc06._.js:8820:9)
+    at MessagePort.performWorkUntilDeadline (https://e62547f6-d04b-4904-9bd0-9610b6f105bd-00-1yp36uznq3i0l.worf.replit.dev/_next/static/chunks/node_modules_next_dist_compiled_0f1b9fd4._.js:2588:64)
